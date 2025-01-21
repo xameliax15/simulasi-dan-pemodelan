@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Distribusi Binomial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator-container {
+            background-color: #ffffff;
+            width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .calculator-header {
+            background-color: #0078d7;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #31d7ed;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2deaff;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1>Kalkulator Distribusi Probabilitas Binomial</h1>
+        </div>
+        <div class="calculator-body">
+            <h2>Masukkan Data:</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="n">Jumlah Percobaan n:</label>
+                    <input type="number" id="n" name="n" placeholder="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="p">Probabilitas Keberhasilan p:</label>
+                    <input type="text" id="p" name="p" placeholder="0.5" required>
+                </div>
+                <div class="form-group">
+                    <label for="k">Jumlah Keberhasilan k:</label>
+                    <input type="number" id="k" name="k" placeholder="5" required>
+                </div>
+                <button type="submit" class="submit-btn">Hitung Probabilitas</button>
+            </form>
+            {% if result %}
+                <h3>Hasil:</h3>
+                <p>{{ result }}</p>
+                <div class="explanation">{{ explanation|safe }}</div>
+                <h3>Grafik:</h3>
+                <img src="data:image/png;base64,{{ image }}" alt="Grafik Binomial">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
